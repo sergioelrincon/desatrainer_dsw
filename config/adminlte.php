@@ -330,7 +330,17 @@ return [
             'url' => 'admin/dashboard',
             'icon' => 'fas fa-fw fa-home',
         ],
- 
+
+        [
+            'text' => 'Usuarios',
+            'icon' => 'fas fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Usuarios',
+                    'url' => 'admin/users',
+                ]
+            ],
+        ],           
 
         [
             'text' => 'blog',
