@@ -33,8 +33,8 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6|confirmed'
+            'email' => 'required|email|unique:users',   // "unique_users" se asegura que el correo electrónico sea único en la tabla users (https://laravel.com/docs/11.x/validation#rule-unique)
+            'password' => 'required|min:6|confirmed'    // "confirmed" requiere que haya un campo adicional llamado "password_confirmation" en la solicitud y que ambos campos coincidan (https://laravel.com/docs/11.x/validation#rule-confirmed)
         ]);
         User::create([
             'name' => $request->name,
