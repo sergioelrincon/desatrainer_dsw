@@ -455,12 +455,12 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => true,   // Habilitamos Sweetaler2, para mostrar, por ejemplo, las confirmaciones de borrado
-            'files' => [
+            'active' => true,   // Incluimos y habilitamos Sweetaler2, para mostrar, por ejemplo, las confirmaciones de borrado
+            'files' => [    // Archivos que deben ser incluidos para que SweetAlert2 funcione correctamente
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@11',
+                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@11',  // CDN de SweetAlert2 (versión 11)
                 ],
             ],
         ],

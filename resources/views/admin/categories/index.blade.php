@@ -77,22 +77,23 @@
 
 @section('js')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.delete-category').forEach(button => {
+        // Código utilizado para mostrar un mensaje de confirmación al eliminar una categoría
+        document.addEventListener('DOMContentLoaded', function() {  // Solo se ejecuta cuando el documento se ha cargado completamente
+            document.querySelectorAll('.delete-category').forEach(button => {   // Para cada elemento de la clase "delete-category" añade un evento al hacer click
                 button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const form = this.closest('form');
-                    Swal.fire({
+                    e.preventDefault(); // Previene la acción por defecto del botón
+                    const form = this.closest('form');  // Busca el formulario más cercano al botón
+                    Swal.fire({ // Muestra un mensaje de confirmación
                         title: '¿Estás seguro?',
                         text: "No podrás revertir esta acción",
                         icon: 'warning',
                         showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
+                        confirmButtonColor: '#3085d6',  
                         cancelButtonColor: '#d33',
-                        confirmButtonText: 'Sí, eliminar',
+                        confirmButtonText: 'Sí, eliminar',  
                         cancelButtonText: 'Cancelar'
                     }).then((result) => {
-                        if (result.isConfirmed) {
+                        if (result.isConfirmed) {   // Si el usuario confirma, se envía el formulario
                             form.submit();
                         }
                     });
