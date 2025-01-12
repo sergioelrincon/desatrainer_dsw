@@ -10,6 +10,7 @@ use Illuminate\Validation\Rule;
  * 
  * Esta clase se encarga de validar los datos de las peticiones HTTP
  * que se realizan a la API de usuarios.
+ * 
  * Más información sobre UserRequest en https://ies-el-rincon.gitbook.io/dsw/laravel/controladores/request
  * 
  * @package App\Http\Requests
@@ -23,6 +24,7 @@ class UserRequest extends FormRequest
 
     public function rules()
     {        
+        // Reglas de validación en función de si estamos creando o actualizando un registro
         return [
             'name' => [
                 $this->method() == 'POST' ? 'required' : 'nullable',
@@ -35,13 +37,13 @@ class UserRequest extends FormRequest
                 'email',
                 $this->method() == 'POST' 
                     ? 'unique:users' 
-                    : Rule::unique('users')->ignore($this->user)
+                    : Rule::unique('users')->ignore($this->user)    // Ignoramos el email del usuario actual si estamos actualizando
             ],
     
             'password' => [
                 $this->method() == 'POST' ? 'required' : 'nullable',
                 'min:6',
-                'confirmed'
+                'confirmed' // Comprueba que el campo password_confirmation coincida con el campo password
             ],
         ];
     }
