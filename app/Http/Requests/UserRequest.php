@@ -8,8 +8,7 @@ use Illuminate\Validation\Rule;
 /**
  * Clase UserRequest
  * 
- * Esta clase se encarga de validar los datos de las peticiones HTTP
- * que se realizan a la API de usuarios.
+ * Esta clase se encarga de validar y autorizar los datos entrantes al controlador de usuarios
  * 
  * Más información sobre UserRequest en https://ies-el-rincon.gitbook.io/dsw/laravel/controladores/request
  * 
