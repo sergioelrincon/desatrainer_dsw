@@ -16,21 +16,20 @@ class ScenarioController extends Controller
     {
         $scenarios = Scenario::all();
         
-        /**
-         * pluck extrae una lista de valores de una columna específica. En el primer argumento indicamos la columna cuyos valores queremos extraer. 
-         * El segundo, la columna que se usará como clave en el array resultante. Esto generará un array asociativo donde las claves son los valores 
-         * de la columna id y los valores son los valores de la columna name.
-         */
-        $categories = Category::pluck('name', 'id'); 
-        
-        return view('admin.scenarios.index', compact('scenarios', 'categories'));
+        return view('admin.scenarios.index', compact('scenarios'));
     }
     /**
     * Show the form for creating a new resource.
     */
     public function create()
     {
+         /**
+         * pluck extrae una lista de valores de una columna específica. En el primer argumento indicamos la columna cuyos valores queremos extraer. 
+         * El segundo, la columna que se usará como clave en el array resultante. Esto generará un array asociativo donde las claves son los valores 
+         * de la columna id y los valores son los valores de la columna name.
+         */
         $categories = Category::pluck('name', 'id');
+        
         $desaTrainers = DesaTrainer::pluck('name', 'id');
         return view('admin.scenarios.create', compact('categories', 'desaTrainers'));
     }
