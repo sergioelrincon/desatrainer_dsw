@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Builder;
 
 class User extends Authenticatable
 {
@@ -64,4 +65,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    
+    // Scope para filtrar por nombre
+    public function scopeFilterByName(Builder $query, $name)
+    {
+        return $query->where('name', 'like', "%{$name}%");
+    }
+    
+    // Scope para filtrar por email
+    public function scopeFilterByEmail(Builder $query, $email)
+    {
+        return $query->where('email', 'like', "%{$email}%");
+    }    
 }

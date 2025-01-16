@@ -19,6 +19,21 @@
                 </div>
 
                 <div class="card-body">
+                    <!-- Formulario de búsqueda y filtros -->
+                    <form method="GET" action="{{ route('users.index') }}" class="mb-4 d-flex flex-wrap">
+                        <!-- Selector de cantidad de registros por página -->
+                        <select name="per_page" class="form-control mb-2 mr-2">
+                            <option value="2" {{ request('per_page') == 2 ? 'selected' : '' }}>Mostrar 2 registros</option>
+                            <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>Mostrar 25 registros</option>
+                            <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>Mostrar 50 registros</option>
+                            <option value="100" {{ request('per_page') == 100 ? 'selected' : '' }}>Mostrar 100 registros</option>
+                        </select> 
+                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Buscar por nombre o email" class="form-control mb-2 mr-2">
+                        <button type="submit" class="btn btn-primary mb-2 mr-2">Buscar</button>
+                        <a href="{{ route('users.index') }}" class="btn btn-secondary mb-2">Limpiar</a>
+                    </form>
+                
+
                     <!-- Tabla de usuarios -->
                     <table class="table table-bordered table-striped">
                         <thead>
@@ -60,6 +75,14 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <!-- Paginación -->
+                    <div class="mt-4">
+                        {{ $users->links("vendor.pagination.bootstrap-4") }}
+                    </div>
+                    <div class="mt-4">
+                        {{ __('Showing') }} {{ $users->firstItem() }} {{ __('to') }} {{ $users->lastItem() }}
+                        {{ __('of') }} {{ $users->total() }} {{ __('results') }}
+                    </div>                    
                 </div>
             </div>
         </div>

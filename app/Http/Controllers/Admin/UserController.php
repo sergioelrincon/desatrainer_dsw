@@ -9,12 +9,22 @@ use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
+    protected $allowedPerPage = [2, 25, 50, 100];   // Incluimos el valor 2 para que se pueda probar fácilmente
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all();
+        //Controlar el número de registros que queremos mostrar por página
+        $perPage = in_array($request->input('per_page'), $this->allowedPerPage) ? $request->input('per_page') : 2;
+
+        // Filtrar y ordenar los usuarios
+        $users = User::query()
+            ->filterByName($request->get('search'))
+            ->filterByEmail($request->get('email'))
+            ->paginate($perPage);        
+
         return view('admin.users.index', compact('users'));
     }
 
