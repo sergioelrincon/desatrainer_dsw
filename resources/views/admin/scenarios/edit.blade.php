@@ -99,6 +99,21 @@
                     </div>
                 </form>
             </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="mt-4">
+                        @livewire('admin.scenario-instructions', ['scenario' => $scenario])
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="mt-4">
+                        @livewire('admin.instruction-transitions', ['scenario' => $scenario])
+                    </div>
+                </div>
+            </div>
             
         </div>
     </div>
