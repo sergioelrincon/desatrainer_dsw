@@ -60,6 +60,13 @@
                                     title="Editar">
                                      <i class="fas fa-edit"></i>
                                  </a>
+                                 <a href="{{ route('desa-trainers.show', $trainer->id) }}" 
+                                    class="btn btn-sm btn-info" 
+                                    data-toggle="tooltip" 
+                                    data-placement="top" 
+                                    title="Editar botones">
+                                    <i class="fas fa-toggle-on"></i>
+                                 </a>                                 
                                 <form action="{{ route('desa-trainers.destroy', $trainer->id) }}" 
                                       method="POST" 
                                       style="display:inline;">
